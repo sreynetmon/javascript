@@ -4,6 +4,7 @@
 //     console.log(Array[i]);
 // }
 
+
 // //While
 // let Array = [10,20,30];
 // i=0;
@@ -11,6 +12,7 @@
 //     console.log(Array[i]);
 //     i++;
 // }
+
 
 // //do while
 // let Array = [10,20,30];
@@ -20,11 +22,13 @@
 //     i++;
 // }while(i<Array.length);
 
+
 // let Array = [10,20,30];
 // var data;
 // for(i in Array){
 //     data += console.log(Array[i]);
 // }
+
 
 let Array = [10,20,30];
 var data;
