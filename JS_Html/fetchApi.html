@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Api</title>
+    <link rel="stylesheet" href="bootstrap.min5.0.css">
+    <style>
+        img{
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+        }
+        h2{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center text-success">Fetch Api</h1>
+        <div class="row">
+
+        </div>
+    </div>
+</body>
+<script>
+    let url = "https://fakestoreapi.com/products";
+    let categories = document.querySelector('.row');
+    async function fetchApi(){
+        let response = await fetch(url);
+        let Data = await response.json();
+        console.log(Data);
+        Data.map((data)=>{
+            categories.innerHTML +=`
+            <div class="col-lg-3 col-md-3 mt-2">
+                <div class="card p-3">
+                    <img src="${data.image}" alt="">
+                    <p>${data.id}</p>
+                    <h2>${data.title}</h2>
+                </div>
+            </div>
+            `
+        })
+    }
+    fetchApi();
+</script>
+</html>

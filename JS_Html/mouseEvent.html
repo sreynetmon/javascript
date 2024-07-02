@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min5.0.css">
+    <title>Mouse Event</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <img id="img" onmouseover="changePic()"  class="rounded" width="300px" height="250px" src="https://t3.ftcdn.net/jpg/06/68/83/82/360_F_668838262_0kk2O8KnNsJCHJ37CJxe3JYgBird52cH.jpg" alt="">
+        <button onmousedown="test()" class="btn btn-success">Click</button>
+        <input type="text" id="test">
+    </div>
+</body>
+<script>
+    let img = document.getElementById("img");
+    // function changePic(){
+    //     img.src = "https://www.shutterstock.com/image-photo/mountain-sea-bay-beach-landscape-260nw-1777834952.jpg";
+    // }
+
+    document.getElementById("img").onmouseover = function(){
+        img.src = "https://www.shutterstock.com/image-photo/mountain-sea-bay-beach-landscape-260nw-1777834952.jpg";
+    }
+    document.getElementById("img").onmouseout = function(){
+        img.src = "https://t3.ftcdn.net/jpg/06/68/83/82/360_F_668838262_0kk2O8KnNsJCHJ37CJxe3JYgBird52cH.jpg";
+    }
+    function test(){
+        window.confirm("Are you sure you want to mousedown?");
+    }
+    let text = document.getElementById("test");
+    document.getElementById("test").onmouseenter = function(){
+        text.style.color = "black";
+    }
+</script>
+</html>

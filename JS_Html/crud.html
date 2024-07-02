@@ -1,0 +1,118 @@
+<!-- crud:
+-c= create
+-r= read
+-u= update
+-d= delete -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min5.0.css">
+    <title>Crud</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center text-danger">Crud in Javascript</h1>
+        <div class="row">
+            <div class="col-md-6 p-3">
+                <div class="border border-success bg-primary rounded p-3">
+                    <h1 class="text-center text-warning">Add Products</h1>
+                    <label for="user" class="text-light">Product Name:</label>
+                    <input type="text" placeholder="Enter name..." class="form-control" id="user">
+                    <label for="price" class="text-light">Price:</label>
+                    <input type="text" placeholder="Enter price..." class="form-control" id="price">
+                    <label for="qty" class="text-light">Quantity:</label>
+                    <input type="text" placeholder="Enter qty..." class="form-control" id="qty">
+                    <button onclick="addProducts()" class="btn btn-success mt-2">Add Products</button>
+                    <button onclick="updateProduct()" class="btn btn-warning mt-2">Update Products</button>
+                    <button onclick="deleteRow()" class="btn btn-danger mt-2">Delete Products</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="bg-secondary p-3 rounded mt-3">
+                    <table class="table table-bordered table-primary p-2">
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quality</th>
+                        </tr>
+                        <tbody id="productTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let rIndex, table = document.getElementById("productTableBody");
+    function addProducts(){
+        let newRow = table.insertRow(table.length);
+        let user = document.getElementById("user").value.trim();
+        let price = document.getElementById("price").value.trim();
+        let qty = document.getElementById("qty").value.trim();
+        if(user === "" && price === "" && qty === ""){
+            alert("please fill in all fields");
+            return;
+        }else{
+            if(user === ""){
+                showError("user");
+                return;
+            }
+            else if(price === ""){
+                showError("price");
+                return;
+            }
+            else if(qty === ""){
+                showError("quantity");
+                return;
+            }
+        }
+        let col1 = newRow.insertCell(0);
+        let col2 = newRow.insertCell(1);
+        let col3 = newRow.insertCell(2);
+        col1.innerHTML = user;
+        col2.innerHTML = price;
+        col3.innerHTML = qty;
+        document.getElementById("user").value="";
+        document.getElementById("price").value="";
+        document.getElementById("qty").value="";
+        getSelectedRow();
+    }
+
+    function showError(field){
+        alert("You cannot insert a product without a valid " + field + ".");
+    }
+
+    function getSelectedRow(){
+        for(var i=0; i<table.rows.length; i++){
+            //get selected row
+            table.rows[i].onclick = function(){
+                rIndex = this.rowIndex;
+                console.log(rIndex);
+                document.getElementById("user").value = this.cells[0].innerHTML;
+                document.getElementById("price").value = this.cells[1].innerHTML;
+                document.getElementById("qty").value = this.cells[2].innerHTML;
+            }
+        }
+    }
+    getSelectedRow();
+    function updateProduct(){
+        if(rIndex === undefined){
+            alert("Please select your product.");
+        }
+        let newName = document.getElementById("user").value;
+        let newPrice = document.getElementById("price").value;
+        let newQty = document.getElementById("qty").value;
+
+        let row = table.rows[rIndex];
+        row.cells[0].innerHTML = newName;
+        row.cells[1].innerHTML = newPrice;
+        row.cells[2].innerHTML = newQty;
+
+        //Clear input fields
+        document.getElementById("user").value = "";
+        document.getElementById("price").value = "";
+        document.getElementById("qty").value = "";
+    }
+</script>
+</html>

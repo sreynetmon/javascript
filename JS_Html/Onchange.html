@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min5.0.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container w-50 p-2">
+        <label for="Search">Search change value</label>
+        <input type="text" class="form-control" id="input">
+    </div>
+</body>
+<script>
+    document.getElementById("input").onchange= function(){
+        var result = document.getElementById("input");
+        result.value = result.value.toUpperCase();
+    };
+</script>
+</html>
